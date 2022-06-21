@@ -1,0 +1,14 @@
+[13-Jun-2022 19:22:04 UTC] PHP Notice:  Undefined index: customer_name in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 326
+[13-Jun-2022 19:22:04 UTC] PHP Notice:  Undefined index: user_avatar in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 328
+[13-Jun-2022 19:22:04 UTC] PHP Notice:  Undefined index: license_id in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 333
+[13-Jun-2022 19:22:04 UTC] PHP Notice:  Undefined index: payment_id in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 333
+[13-Jun-2022 19:22:29 UTC] PHP Notice:  Undefined index: customer_name in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 326
+[13-Jun-2022 19:22:29 UTC] PHP Notice:  Undefined index: user_avatar in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 328
+[13-Jun-2022 19:22:29 UTC] PHP Notice:  Undefined index: license_id in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 333
+[13-Jun-2022 19:22:29 UTC] PHP Notice:  Undefined index: payment_id in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 333
+[14-Jun-2022 21:01:04 UTC] PHP Notice:  Undefined index: _wpcf7 in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/slatre/admin/class-slatre-admin.php on line 728
+[14-Jun-2022 21:01:04 UTC] PHP Warning:  Use of undefined constant ARR - assumed 'ARR' (this will throw an Error in a future version of PHP) in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/slatre/admin/class-slatre-admin.php on line 828
+[14-Jun-2022 21:04:21 UTC] PHP Notice:  Undefined index: customer_name in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 326
+[14-Jun-2022 21:04:21 UTC] PHP Notice:  Undefined index: user_avatar in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 328
+[14-Jun-2022 21:04:21 UTC] PHP Notice:  Undefined index: license_id in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 333
+[14-Jun-2022 21:04:21 UTC] PHP Notice:  Undefined index: payment_id in /var/www/clientes.portafolioweb.pro/htdocs/lexley/wp-content/plugins/uncanny-automator/src/core/admin/class-admin-menu.php on line 333
