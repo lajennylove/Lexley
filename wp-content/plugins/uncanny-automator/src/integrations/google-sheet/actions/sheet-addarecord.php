@@ -17,10 +17,15 @@ class SHEET_ADDARECORD {
 	public static $integration = 'GOOGLESHEET';
 
 	/**
+	 * Property action code.
+	 *
 	 * @var string
 	 */
 	private $action_code;
+
 	/**
+	 * Property action meta.
+	 *
 	 * @var string
 	 */
 	private $action_meta;
@@ -45,13 +50,14 @@ class SHEET_ADDARECORD {
 			'is_pro'             => false,
 			'integration'        => self::$integration,
 			'code'               => $this->action_code,
+			/* translators: Action sentence */
 			'sentence'           => sprintf( __( 'Create a row in a {{Google Sheet:%1$s}}', 'uncanny-automator' ), $this->action_meta ),
 			'select_option_name' => __( 'Create a row in a {{Google Sheet}}', 'uncanny-automator' ),
 			'priority'           => 10,
 			'accepted_args'      => 1,
 			'requires_user'      => false,
 			'execution_function' => array( $this, 'add_row_google_sheet' ),
-			'options_callback'	 => array( $this, 'load_options' ),
+			'options_callback'   => array( $this, 'load_options' ),
 			'buttons'            => array(
 				array(
 					'show_in'     => $this->action_meta,
@@ -65,15 +71,15 @@ class SHEET_ADDARECORD {
 
 		Automator()->register->action( $action );
 	}
-	
+
 	/**
-	 * load_options
+	 * Method load_options.
 	 *
 	 * @return void
 	 */
 	public function load_options() {
 		$options = array(
-			'options_group'      => array(
+			'options_group' => array(
 				$this->action_meta => array(
 					Automator()->helpers->recipe->google_sheet->options->get_google_drives(
 						__( 'Drive', 'uncanny-automator' ),
@@ -104,8 +110,7 @@ class SHEET_ADDARECORD {
 						'option_code'       => 'WORKSHEET_FIELDS',
 						'input_type'        => 'repeater',
 						'label'             => __( 'Row', 'uncanny-automator' ),
-						/* translators: 1. Button */
-						'description'       => __( '', 'uncanny-automator' ),
+						'description'       => '',
 						'required'          => true,
 						'default_value'     => array(
 							array(
@@ -168,7 +173,7 @@ class SHEET_ADDARECORD {
 					},
 					// i18n
 					i18n: {
-						checkingHooks: "<?php printf( esc_html__( "We're checking for columns. We'll keep trying for %s seconds.", 'uncanny-automator' ), '{{time}}' ); ?>",
+						checkingHooks: "<?php /* translators: Columns */ printf( esc_html__( "We're checking for columns. We'll keep trying for %s seconds.", 'uncanny-automator' ), '{{time}}' ); ?>",
 						noResultsTrouble: "<?php esc_html_e( 'We had trouble finding columns.', 'uncanny-automator' ); ?>",
 						noResultsSupport: "<?php esc_html_e( 'See more details or get help', 'uncanny-automator' ); ?>",
 						samplesModalTitle: "<?php esc_html_e( "Here is the data we've collected", 'uncanny-automator' ); ?>",
@@ -375,7 +380,10 @@ class SHEET_ADDARECORD {
 			$gs_worksheet = 0;
 		}
 
-		for ( $i = 0; $i < count( $fields ); $i ++ ) {
+		// Check if fields is a valid array. PHP 8.0+ throws fatal error for null types when called inside count function.
+		$fields_count = is_array( $fields ) ? count( $fields ) : 0;
+
+		for ( $i = 0; $i < $fields_count; $i ++ ) {
 
 			$key = $fields[ $i ]['GS_COLUMN_NAME'];
 
@@ -411,7 +419,7 @@ class SHEET_ADDARECORD {
 			return;
 
 		} catch ( \Exception $e ) {
-			$error_msg = $e->getMessage();
+			$error_msg                           = $e->getMessage();
 			$action_data['do-nothing']           = true;
 			$action_data['complete_with_errors'] = true;
 			Automator()->complete_action( $user_id, $action_data, $recipe_id, $error_msg );

@@ -214,9 +214,9 @@ add_filter( 'private_title_format', function ( $format ) {
 // Avoid the 404 page for private posts, send to the sign up page
 add_action('wp','redirect_stuffs', 0);
 function redirect_stuffs(){
-global $wpdb; 
+	global $wpdb; 
     if ($wpdb->last_result[0]->post_status == "private" && !is_user_logged_in() ):
-        wp_redirect(home_url('/wp-login.php?action=register'), 301 );
+        wp_redirect(home_url('/area-privada'), 301 );
         exit();
     endif;
 }

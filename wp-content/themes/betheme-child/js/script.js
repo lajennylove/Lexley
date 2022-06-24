@@ -219,6 +219,14 @@ ko.bindingHandlers.trelloCardCover = {
         var coverAttachment = card.actions().filter(action => action.data.attachment && action.data.attachment.id == card.cover.idAttachment)
         if(coverAttachment.length == 1) {
             var backgroundImage = coverAttachment[0].data.attachment.previewUrl
+
+            // encode URI for background-image
+            var backgroundImageEncoded = encodeURIComponent(backgroundImage);
+
+            // send backgroundImageEncoded to 
+            backgroundImage = site.theme_path+'/image.php?imgurl='+backgroundImageEncoded;
+            console.log({backgroundImage});
+
             if(backgroundImage) {
                 $(element).css({
                     // 'background-color': 'rgb(29, 83, 43)',
@@ -248,7 +256,6 @@ jQuery( 'document' ).ready( function( $ ) {
         async: true,
         method: 'GET',
         success: function( response ) {
-            console.log({response});
 
             vm = new Trello(response);
             ko.applyBindings(vm);
@@ -256,12 +263,11 @@ jQuery( 'document' ).ready( function( $ ) {
             console.log({vm});
 
             // Open card if one in URL:
-            var matches = document.location.hash.match(/card:([0-9A-Za-z]+)/); console.log({matches});
+            var matches = document.location.hash.match(/card:([0-9A-Za-z]+)/);
             if(matches) {
                 card = vm.board.getCardByShortLink(matches[1])
                 vm.board.openCard(card)
             }
-            console.log(matches);
         }
     } );
 } );
