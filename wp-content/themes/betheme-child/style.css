@@ -14,3 +14,7 @@ Version: 2.0
     height: 100%;
     min-height: 500px;
 }
+
+.fixed-nav{
+    display: none;
+}

@@ -151,13 +151,16 @@ function showDocuments() {
 	}
 	else {
 		// get the acf field selector_cliente's value and store it in $postID from the current user
-		$postID = get_field('selector_cliente', 'user_'.get_current_user_id());
+		$posts = get_field('selector_cliente', 'user_'.get_current_user_id());
 
-		// get the post with the $postID
-		$post = get_post( $postID );
-		$title = $post->post_title;
-		$permalink = get_permalink( $postID );
-		$contenido .= '<li><a href="'.$permalink.'">'.$title.'</a></li>';
+		foreach ($posts as $postID) {
+			// get the post with the $postID
+			$post = get_post( $postID );
+			$title = $post->post_title;
+			$permalink = get_permalink( $postID );
+			$contenido .= '<li><a href="'.$permalink.'">'.$title.'</a></li>';
+		}
+		
 	}
 	return $contenido;
 }
@@ -232,3 +235,11 @@ function ps_redirect_after_logout(){
 $subRole = get_role( 'subscriber' );
 $subRole->add_cap( 'read_private_posts' );
 $subRole->add_cap( 'read_private_pages' );
+
+// Remove admin bar from subscribers
+add_action('after_setup_theme', 'remove_admin_bar');
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin()) {
+		show_admin_bar(false);
+	}
+}
